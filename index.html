@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WordWiz — Learn English the fun way</title>
+  <meta name="description" content="Master 60 Grade 10 English words from Units 1–3 with flip flashcards, quizzes, a timed test and word games." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237c5cff'/><stop offset='1' stop-color='%23ff5fa2'/></linearGradient></defs><rect width='100' height='100' rx='26' fill='url(%23g)'/><text x='50' y='69' font-family='Arial' font-size='54' font-weight='bold' fill='white' text-anchor='middle'>W</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-decor" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="WordWiz home">
+      <span class="brand-mark">W</span>
+      <span class="brand-text">
+        <strong>WordWiz</strong>
+        <small>Grade 10 · Units 1–3</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-view="home">Home</button>
+      <button class="nav-btn" data-view="flashcards">Flashcards</button>
+      <button class="nav-btn" data-view="quiz">Quiz</button>
+      <button class="nav-btn" data-view="test">Test</button>
+      <button class="nav-btn" data-view="games">Games</button>
+    </nav>
+
+    <div class="xp-badge" id="xpBadge" title="Experience points">
+      <span>⚡</span><b id="xpValue">0</b><em>XP</em>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HOME ================= -->
+    <section class="view active" id="view-home">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="pill"><i class="pill-dot"></i> 60 words · 3 units · 4 ways to practise</span>
+          <h1>Learn English<br /><span class="grad-text">the fun way.</span></h1>
+          <p>
+            Flashcards that flip, quizzes that stick, and word games that make studying
+            feel like play. Built for Grade 10 — Family Life, Environment &amp; Music.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-go="flashcards">Start flashcards <span>→</span></button>
+            <button class="btn btn-ghost" data-go="quiz">Take a quiz</button>
+          </div>
+          <div class="hero-checks">
+            <span>✓ 60 words</span>
+            <span>✓ +XP rewards</span>
+            <span>✓ Progress saved</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <span class="art-spark art-spark-1">✦</span>
+          <span class="art-spark art-spark-2">✧</span>
+          <div class="art-card art-1">
+            <span class="art-tag">Unit 1 · Family Life</span>
+            <strong>breadwinner</strong>
+            <em>/ˈbredwɪnər/</em>
+            <span class="art-vi">Người trụ cột gia đình</span>
+          </div>
+          <div class="art-card art-2">
+            <span class="art-tag">Unit 2 · Environment</span>
+            <strong>eco-friendly</strong>
+            <em>/ˌiːkəʊ ˈfrendli/</em>
+            <span class="art-vi">Thân thiện với môi trường</span>
+          </div>
+          <div class="art-card art-3">
+            <span class="art-tag">Unit 3 · Music</span>
+            <strong>phenomenon</strong>
+            <em>/fəˈnɒmɪnən/</em>
+            <span class="art-vi">Hiện tượng</span>
+          </div>
+          <span class="art-badge">⚡ +10 XP per answer</span>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-icon" style="--iA:#7c5cff;--iB:#c026d3">⚡</span>
+          <div class="stat-body">
+            <span class="stat-label">Total XP</span>
+            <strong id="statXp">0</strong>
+            <small>Earned from every correct answer</small>
+          </div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon" style="--iA:#0ea5e9;--iB:#06b6d4">🎯</span>
+          <div class="stat-body">
+            <span class="stat-label">Words mastered</span>
+            <strong id="statMastered">0/60</strong>
+            <small>Mark words you know in Flashcards</small>
+          </div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon" style="--iA:#16c79a;--iB:#22d3ee">📈</span>
+          <div class="stat-body">
+            <span class="stat-label">Best quiz</span>
+            <strong id="statQuiz">—</strong>
+            <small>Accuracy on 10-question quizzes</small>
+          </div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon" style="--iA:#ff9f43;--iB:#ff5fa2">⏱️</span>
+          <div class="stat-body">
+            <span class="stat-label">Best test</span>
+            <strong id="statTest">—</strong>
+            <small>Accuracy on timed tests</small>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Vocabulary decks</span>
+          <h2>Choose a unit</h2>
+        </div>
+        <p>20 curated words per unit — with IPA and Vietnamese meaning.</p>
+      </div>
+      <div class="units-grid" id="unitsGrid"></div>
+
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Pick your vibe</span>
+          <h2>Ways to learn</h2>
+        </div>
+        <p>Mix modes to remember more. Every session earns XP.</p>
+      </div>
+      <div class="modes-grid">
+        <button class="mode-card" data-go="flashcards">
+          <span class="mode-icon m-flash">🃏</span>
+          <span class="mode-text"><strong>Flashcards</strong><small>Flip, recall, repeat</small></span>
+          <span class="mode-arrow">→</span>
+        </button>
+        <button class="mode-card" data-go="quiz">
+          <span class="mode-icon m-quiz">✅</span>
+          <span class="mode-text"><strong>Quiz</strong><small>10-question sprint</small></span>
+          <span class="mode-arrow">→</span>
+        </button>
+        <button class="mode-card" data-go="test">
+          <span class="mode-icon m-test">⏱️</span>
+          <span class="mode-text"><strong>Test</strong><small>Timed 15-question exam</small></span>
+          <span class="mode-arrow">→</span>
+        </button>
+        <button class="mode-card" data-go="games">
+          <span class="mode-icon m-games">🎮</span>
+          <span class="mode-text"><strong>Games</strong><small>Match &amp; scramble</small></span>
+          <span class="mode-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= FLASHCARDS ================= -->
+    <section class="view" id="view-flashcards">
+      <div class="view-head">
+        <div>
+          <span class="eyebrow">Flashcards</span>
+          <h2>Flip. Recall. Repeat.</h2>
+        </div>
+        <div class="head-tools">
+          <div class="chips" id="fcFilters"></div>
+          <button class="btn btn-ghost btn-small" id="fcShuffle" title="Shuffle deck">⇄ Shuffle</button>
+        </div>
+      </div>
+
+      <div class="fc-bar">
+        <div class="fc-progress"><div class="fc-progress-fill" id="fcProgressFill"></div></div>
+        <span id="fcCounter">1 / 60</span>
+      </div>
+
+      <div class="flash-stage">
+        <div class="flip-card" id="flipCard" tabindex="0" role="button" aria-label="Flashcard — click to flip">
+          <div class="flip-inner">
+            <div class="face face-front">
+              <div class="face-top">
+                <span class="tag" id="fcType">noun</span>
+                <span class="tag unit-tag u1" id="fcUnit">Unit 1 · Family Life</span>
+                <span class="tag tag-mastered hidden" id="fcMastered">✓ mastered</span>
+              </div>
+              <div class="face-main">
+                <h3 class="word" id="fcWord">Breadwinner</h3>
+                <p class="ipa" id="fcIpa">/ˈbredwɪnər/</p>
+                <button class="speak" id="fcSpeak" type="button" title="Hear pronunciation">🔊</button>
+              </div>
+              <p class="flip-hint">Click the card or press <kbd>Space</kbd> to flip</p>
+            </div>
+            <div class="face face-back">
+              <span class="tag tag-light">Nghĩa tiếng Việt</span>
+              <h3 class="meaning" id="fcMeaning">Người trụ cột gia đình</h3>
+              <p class="back-word" id="fcBackWord">Breadwinner · noun</p>
+              <p class="flip-hint light">Press <kbd>Space</kbd> to flip back</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-controls">
+        <button class="round-btn" id="fcPrev" type="button" aria-label="Previous card">←</button>
+        <button class="round-btn round-btn-main" id="fcFlip" type="button" aria-label="Flip card">⟳</button>
+        <button class="round-btn" id="fcNext" type="button" aria-label="Next card">→</button>
+      </div>
+
+      <div class="fc-mark">
+        <button class="btn btn-soft-red" id="fcAgain" type="button">Still learning</button>
+        <span class="fc-streak" id="fcStats">Mastered 0 of 60</span>
+        <button class="btn btn-soft-green" id="fcKnow" type="button">I know it ✓</button>
+      </div>
+
+      <p class="shortcuts">Shortcuts: <kbd>Space</kbd> flip · <kbd>←</kbd> / <kbd>→</kbd> navigate · <kbd>K</kbd> know it</p>
+    </section>
+
+    <!-- ================= QUIZ ================= -->
+    <section class="view" id="view-quiz">
+      <div class="view-head">
+        <div>
+          <span class="eyebrow">Quiz</span>
+          <h2>Quick-fire quiz</h2>
+        </div>
+      </div>
+
+      <div class="panel intro-panel" id="quizIntro">
+        <div class="intro-top">
+          <span class="intro-emoji">✅</span>
+          <div>
+            <h3>10 questions, instant feedback</h3>
+            <p>Multiple choice mixing English → Vietnamese and Vietnamese → English. Earn +10 XP for every correct answer and build a streak.</p>
+          </div>
+        </div>
+        <div class="intro-row">
+          <span class="intro-label">Words from</span>
+          <div class="chips" id="quizFilters"></div>
+        </div>
+        <div class="intro-foot">
+          <span class="intro-best">🏆 Your best: <strong id="quizBest">—</strong></span>
+          <button class="btn btn-primary" id="quizStart" type="button">Start quiz →</button>
+        </div>
+      </div>
+
+      <div id="quizPlay" class="hidden">
+        <div class="play-head">
+          <div class="play-meta">
+            <span id="quizCounter">Question 1 of 10</span>
+            <span id="quizScore">0 correct</span>
+            <span id="quizStreak">🔥 0</span>
+          </div>
+          <div class="progress"><div class="progress-fill" id="quizProgress"></div></div>
+        </div>
+
+        <div class="panel quiz-card">
+          <p class="quiz-prompt" id="quizPrompt">What does this word mean?</p>
+          <h3 class="quiz-word" id="quizWord">Breadwinner</h3>
+          <p class="quiz-sub" id="quizSub">/ˈbredwɪnər/ · noun</p>
+          <div class="options" id="quizOptions"></div>
+          <p class="feedback" id="quizFeedback"></p>
+        </div>
+
+        <button class="btn btn-primary next-btn" id="quizNext" type="button" disabled>Next →</button>
+      </div>
+
+      <div class="panel result hidden" id="quizResult"></div>
+    </section>
+
+    <!-- ================= TEST ================= -->
+    <section class="view" id="view-test">
+      <div class="view-head">
+        <div>
+          <span class="eyebrow">Test</span>
+          <h2>Timed unit test</h2>
+        </div>
+      </div>
+
+      <div class="panel intro-panel" id="testIntro">
+        <div class="intro-top">
+          <span class="intro-emoji">⏱️</span>
+          <div>
+            <h3>15 questions · 5 minutes</h3>
+            <p>Multiple choice and typing questions. There is no instant feedback — you review every answer at the end. Answers are auto-submitted when the clock hits zero.</p>
+          </div>
+        </div>
+        <div class="intro-row">
+          <span class="intro-label">Words from</span>
+          <div class="chips" id="testFilters"></div>
+        </div>
+        <div class="intro-foot">
+          <span class="intro-best">🏆 Your best: <strong id="testBest">—</strong></span>
+          <button class="btn btn-primary" id="testStart" type="button">Start test →</button>
+        </div>
+      </div>
+
+      <div id="testPlay" class="hidden">
+        <div class="play-head">
+          <div class="play-meta">
+            <span id="testCounter">Question 1 of 15</span>
+            <span class="timer-badge" id="testTimerWrap">⏱ <strong id="testTimer">05:00</strong></span>
+          </div>
+          <div class="progress"><div class="progress-fill" id="testProgress"></div></div>
+        </div>
+
+        <div class="panel quiz-card">
+          <span class="tag" id="testType">Multiple choice · EN → VI</span>
+          <p class="quiz-prompt" id="testPrompt">What does this word mean?</p>
+          <h3 class="quiz-word" id="testWord">Breadwinner</h3>
+          <p class="quiz-sub" id="testSub"></p>
+          <div class="options" id="testOptions"></div>
+          <form class="type-form hidden" id="testForm" autocomplete="off">
+            <input id="testInput" type="text" placeholder="Type the English word…" aria-label="Your answer" />
+            <button class="btn btn-primary" type="submit">Save</button>
+          </form>
+          <p class="feedback" id="testFeedback"></p>
+        </div>
+
+        <div class="test-actions">
+          <button class="btn btn-ghost" id="testQuit" type="button">Quit</button>
+          <button class="btn btn-primary" id="testNext" type="button" disabled>Next →</button>
+        </div>
+      </div>
+
+      <div class="panel result hidden" id="testResult"></div>
+    </section>
+
+    <!-- ================= GAMES ================= -->
+    <section class="view" id="view-games">
+      <div class="view-head">
+        <div>
+          <span class="eyebrow">Play &amp; learn</span>
+          <h2>Word games</h2>
+        </div>
+        <p class="head-note">Beat your best score — learning sticks when it feels like a game.</p>
+      </div>
+
+      <div class="games-grid" id="gamesMenu">
+        <article class="game-card game-match">
+          <span class="game-emoji">🧩</span>
+          <h3>Match Madness</h3>
+          <p>Pair each English word with its Vietnamese meaning before the clock eats you alive.</p>
+          <span class="game-best" id="matchBest">Best: —</span>
+          <button class="btn" id="startMatch" type="button">Play now →</button>
+        </article>
+        <article class="game-card game-scramble">
+          <span class="game-emoji">🔤</span>
+          <h3>Word Scramble</h3>
+          <p>Unscramble the letters from the Vietnamese clue. Eight rounds, one combo streak.</p>
+          <span class="game-best" id="scrambleBest">Best: —</span>
+          <button class="btn" id="startScramble" type="button">Play now →</button>
+        </article>
+      </div>
+
+      <div id="matchGame" class="hidden">
+        <div class="game-head">
+          <button class="btn btn-ghost btn-small" id="matchBack" type="button">← Games</button>
+          <h3>Match Madness</h3>
+          <div class="game-stats">
+            <span class="game-stat">⏱ <strong id="matchTimer">0.0s</strong></span>
+            <span class="game-stat">🎯 <strong id="matchMoves">0</strong> moves</span>
+            <span class="game-stat">🧩 <strong id="matchPairs">0</strong>/8</span>
+          </div>
+        </div>
+        <div class="match-grid" id="matchGrid"></div>
+        <div class="panel result hidden" id="matchResult"></div>
+      </div>
+
+      <div id="scrambleGame" class="hidden">
+        <div id="scramblePlay">
+          <div class="game-head">
+            <button class="btn btn-ghost btn-small" id="scrambleBack" type="button">← Games</button>
+            <h3>Word Scramble</h3>
+            <div class="game-stats">
+              <span class="game-stat">🎯 <strong id="scRound">1</strong>/8</span>
+              <span class="game-stat">⭐ <strong id="scScore">0</strong> pts</span>
+            </div>
+          </div>
+
+          <div class="panel scramble-panel">
+            <p class="quiz-prompt">Build the English word for</p>
+            <h3 class="quiz-word sc-meaning" id="scMeaning">Người trụ cột gia đình</h3>
+            <p class="quiz-sub" id="scMeta">noun · 10 letters</p>
+            <div class="sc-answer" id="scAnswer"></div>
+            <div class="sc-letters" id="scLetters"></div>
+            <div class="sc-actions">
+              <button class="btn btn-ghost btn-small" id="scHint" type="button">💡 Hint</button>
+              <button class="btn btn-ghost btn-small" id="scUndo" type="button">⌫ Undo</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel result hidden" id="scResult"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Built for Grade 10 English · Units 1–3 · 60 words · Progress stays in your browser.
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti-layer" id="confetti" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
